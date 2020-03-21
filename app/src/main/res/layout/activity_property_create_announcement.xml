@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TenantHomeScreen">
+    tools:context=".PropertyCreateAnnouncement">
 
     <Button
-        android:id="@+id/issueCreationBtn"
+        android:id="@+id/createAnnouncementBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create New Work Order"
+        android:text="Create"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="547dp" />
-
-    <Button
-        android:id="@+id/tenCheckIssuesBtn"
-        android:layout_width="198dp"
-        android:layout_height="50dp"
-        android:text="View Work Orders"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="615dp" />
-
+        tools:layout_editor_absoluteY="577dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

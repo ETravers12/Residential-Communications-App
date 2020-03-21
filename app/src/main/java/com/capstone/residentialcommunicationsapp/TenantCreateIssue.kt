@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class PropertyPortalActivity : AppCompatActivity() {
+class TenantCreateIssue : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_property_portal)
+        setContentView(R.layout.activity_tenant_create_issue)
 
-        val propLoginSubmit = findViewById<Button>(R.id.propLoginSubmit)
-        propLoginSubmit.setOnClickListener {
-            val intent = Intent(this, PropertyHomeScreen::class.java)
+        val createIssueBtn = findViewById<Button>(R.id.createIssueBtn)
+        createIssueBtn.setOnClickListener {
+            val intent = Intent(this, TenantSuccessfulCreation::class.java)
             startActivity(intent)
         }
     }

@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".PropertyHomeScreen">
 
-    <Button
-        android:id="@+id/checkIssuesBtn2"
-        android:layout_width="198dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
-        android:text="View Work Orders"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Space
         android:layout_width="271dp"
         android:layout_height="408dp"
@@ -32,12 +21,19 @@
         android:id="@+id/createAnnouncementBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="488dp"
         android:text="Create Announcement"
         app:layout_constraintBottom_toTopOf="@+id/checkIssuesBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/propCheckIssuesBtn"
+        android:layout_width="199dp"
+        android:layout_height="50dp"
+        android:text="View Work Orders"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="561dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

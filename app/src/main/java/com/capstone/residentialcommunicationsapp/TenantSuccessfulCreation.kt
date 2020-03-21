@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class PropertyPortalActivity : AppCompatActivity() {
+class TenantSuccessfulCreation : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_property_portal)
+        setContentView(R.layout.activity_tenant_successful_creation)
 
-        val propLoginSubmit = findViewById<Button>(R.id.propLoginSubmit)
-        propLoginSubmit.setOnClickListener {
-            val intent = Intent(this, PropertyHomeScreen::class.java)
+        val tenantReturnBtn = findViewById<Button>(R.id.tenantReturnBtn)
+        tenantReturnBtn.setOnClickListener {
+            val intent = Intent(this, TenantHomeScreen::class.java)
             startActivity(intent)
         }
     }

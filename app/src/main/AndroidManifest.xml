@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.capstone.residentialcommunicationsapp">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PropertyHomeScreen"></activity>
+        <activity android:name=".PropertySuccessfulCreation"></activity>
+        <activity android:name=".TenantSuccessfulCreation" />
+        <activity android:name=".TenantViewIssues" />
+        <activity android:name=".TenantCreateIssue" />
+        <activity android:name=".PropertyCreateAnnouncement" />
+        <activity android:name=".PropertyViewIssues" />
+        <activity android:name=".PropertyHomeScreen" />
         <activity android:name=".TenantHomeScreen" />
         <activity android:name=".PropertyPortalActivity" />
         <activity android:name=".TenantPortalActivity" />
