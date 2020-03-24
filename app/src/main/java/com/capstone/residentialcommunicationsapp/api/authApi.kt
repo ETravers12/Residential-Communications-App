@@ -1,4 +1,10 @@
-package api
+package com.capstone.residentialcommunicationsapp.api
+
+import com.capstone.residentialcommunicationsapp.datamodels.AuthApi
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiForAuthentication{
 
@@ -8,7 +14,7 @@ object ApiForAuthentication{
 
     fun retrofit() : Retrofit = Retrofit.Builder()
         .client(authClient)
-        .baseUrl("https://api.themoviedb.org/3/")
+        .baseUrl("https://com.capstone.residentialcommunicationsapp.api.themoviedb.org/3/")
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
