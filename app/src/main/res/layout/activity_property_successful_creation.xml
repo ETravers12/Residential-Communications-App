@@ -21,9 +21,12 @@
         android:id="@+id/propSuccessMsg"
         android:layout_width="271dp"
         android:layout_height="143dp"
+        android:layout_marginBottom="100dp"
         android:text="Announcement Created Successfully!"
         android:textAlignment="center"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="244dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

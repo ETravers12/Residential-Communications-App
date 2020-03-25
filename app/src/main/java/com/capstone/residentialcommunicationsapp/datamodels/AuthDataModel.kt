@@ -2,6 +2,7 @@ package com.capstone.residentialcommunicationsapp.datamodels
 
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
+import retrofit2.Response
 
 data class Auth(
     val password: String,
