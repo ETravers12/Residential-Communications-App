@@ -2,7 +2,6 @@ package com.capstone.residentialcommunicationsapp.datamodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.capstone.residentialcommunicationsapp.api.ApiForAuthentication
 import com.capstone.residentialcommunicationsapp.api.ApiForAuthentication.authApi
 import com.capstone.residentialcommunicationsapp.repositories.TenantRepository
 import kotlinx.coroutines.CoroutineScope
