@@ -1,6 +1,7 @@
 package com.capstone.residentialcommunicationsapp.api
 
 import com.capstone.residentialcommunicationsapp.datamodels.AuthApi
+import com.capstone.residentialcommunicationsapp.datamodels.TenantApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -14,12 +15,17 @@ object ApiForAuthentication{
 
     fun retrofit() : Retrofit = Retrofit.Builder()
         .client(authClient)
-        .baseUrl("https://com.capstone.residentialcommunicationsapp.api.themoviedb.org/3/")
+        // here, you'll need to use the local IP address of your machine
+        // because when your app is running on android, "localhost"
+        // refers to the device itself.
+        // to find this, use ifconfig | grep inet on terminal
+        .baseUrl("http://192.168.0.23:8080/api/")
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
 
     val authApi : AuthApi = retrofit().create(AuthApi::class.java)
+    val tenantApi : TenantApi = retrofit().create(TenantApi::class.java)
 
 }
