@@ -2,12 +2,10 @@ package com.capstone.residentialcommunicationsapp.datamodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.capstone.residentialcommunicationsapp.api.ApiForAuthentication.authApi
+import com.capstone.residentialcommunicationsapp.api.ApiForAuthentication.tenantApi
 import com.capstone.residentialcommunicationsapp.repositories.TenantRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 class TenantViewModel : ViewModel(){
 
@@ -18,19 +16,28 @@ class TenantViewModel : ViewModel(){
 
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository : TenantRepository = TenantRepository(authApi)
+    private val repository : TenantRepository = TenantRepository(tenantApi)
 
 
-    val tenantUsersLiveData = MutableLiveData<MutableList<Auth>>()
+    val tenantUsersLiveData = MutableLiveData<MutableList<Tenant>>()
+
+    // Login may not have to be asynchronous?
+    val tenantLoginLiveData = MutableLiveData<Tenant>()
+
 
     fun fetchTenantUsers(){
         scope.launch {
-            val popularMovies = repository.getTenantUsers()
+            val tenants = repository.getTenantUsers()
             tenantUsersLiveData.postValue(tenants)
         }
     }
 
+    fun loginTenant(user: String, pass: String){
+        scope.launch {
+            val tenant = repository.checkTenantLogin(user, pass)
+            tenantLoginLiveData.postValue(tenant)
+        }
+    }
 
     fun cancelAllRequests() = coroutineContext.cancel()
-
 }
