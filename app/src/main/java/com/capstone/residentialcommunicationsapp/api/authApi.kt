@@ -19,7 +19,7 @@ object ApiForAuthentication{
         // because when your app is running on android, "localhost"
         // refers to the device itself.
         // to find this, use ifconfig | grep inet on terminal
-        .baseUrl("http://192.168.0.23:8080/api/")
+        .baseUrl("http://192.168.1.184:8080/api/")
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
