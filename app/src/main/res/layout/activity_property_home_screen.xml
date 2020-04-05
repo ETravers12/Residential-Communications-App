@@ -7,7 +7,7 @@
     tools:context=".PropertyHomeScreen">
 
     <Space
-        android:id="@+id/space"
+        android:id="@+id/prop-home-text"
         android:layout_width="271dp"
         android:layout_height="408dp"
         android:layout_marginBottom="200dp"
