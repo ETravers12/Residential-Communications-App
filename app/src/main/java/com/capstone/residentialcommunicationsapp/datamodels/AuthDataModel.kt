@@ -1,9 +1,9 @@
 package com.capstone.residentialcommunicationsapp.datamodels
 
 import kotlinx.coroutines.Deferred
-import retrofit2.http.GET
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 data class Auth(
@@ -19,7 +19,13 @@ data class Tenant (
     val propId: Int,
     val username: String,
     val password: String
+)
 
+data class PropertyManager (
+    val id: Int,
+    val propertyManagerName: String,
+    val username: String,
+    val password: String
 )
 
 data class AuthRequest(
@@ -38,10 +44,19 @@ interface AuthApi{
     @GET("user")
     fun getUser(): Deferred<Response<AuthResponse>>
 }
+
 interface TenantApi{
     @GET("tenant/fakeTenant")
-    fun getFakeTenantAsync(): Deferred<Response<List<Tenant>>>
+    fun getTenantAsync(): Deferred<Response<List<Tenant>>>
 
     @POST("tenant/login")
-    fun checkLogin(@Body request: AuthRequest): Deferred<Response<Tenant>>
+    fun checkTenantLogin(@Body request: AuthRequest): Deferred<Response<Tenant>>
+}
+
+interface PropertyManagerApi{
+    @GET("propertyManager/propertyManager")
+    fun getPropertyManagerAsync(): Deferred<Response<List<PropertyManager>>>
+
+    @POST("propertyManager/login")
+    fun checkPropertyManagerLogin(@Body request: AuthRequest): Deferred<Response<PropertyManager>>
 }

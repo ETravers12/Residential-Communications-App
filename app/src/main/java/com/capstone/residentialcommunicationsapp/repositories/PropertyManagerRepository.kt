@@ -2,17 +2,17 @@ package com.capstone.residentialcommunicationsapp.repositories
 
 import com.capstone.residentialcommunicationsapp.datamodels.AuthRequest
 import com.capstone.residentialcommunicationsapp.datamodels.BaseRepository
-import com.capstone.residentialcommunicationsapp.datamodels.Tenant
-import com.capstone.residentialcommunicationsapp.datamodels.TenantApi
+import com.capstone.residentialcommunicationsapp.datamodels.PropertyManager
+import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerApi
 
-class TenantRepository(private val api: TenantApi) : BaseRepository() {
+class PropertyManagerRepository(private val api: PropertyManagerApi) : BaseRepository() {
 
     // this 'suspend' keyword wasn't here originally
-    suspend fun getTenantUsers() : MutableList<Tenant>?{
+    suspend fun getPropertyManagerUsers() : MutableList<PropertyManager>?{
 
         //safeApiCall is defined in BaseRepository.kt (https://gist.github.com/navi25/67176730f5595b3f1fb5095062a92f15)
         val authResponse = safeApiCall(
-            call = {api.getTenantAsync().await()},
+            call = {api.getPropertyManagerAsync().await()},
             errorMessage = "Error Fetching User"
         )
 
@@ -21,13 +21,13 @@ class TenantRepository(private val api: TenantApi) : BaseRepository() {
 
     }
 
-    suspend fun checkTenantLogin(user: String, pass: String) : Tenant?{
+    suspend fun checkPropertyManagerLogin(user: String, pass: String) : PropertyManager?{
         val userRequest = AuthRequest(user, pass)
 
         return safeApiCall(
-        call = { api.checkTenantLogin(userRequest).await()},
-        errorMessage = "Error Fetching User"
-    );
+            call = { api.checkPropertyManagerLogin(userRequest).await()},
+            errorMessage = "Error Fetching User"
+        );
 
     }
 }

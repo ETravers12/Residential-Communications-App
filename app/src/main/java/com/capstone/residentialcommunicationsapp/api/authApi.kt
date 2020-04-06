@@ -1,6 +1,7 @@
 package com.capstone.residentialcommunicationsapp.api
 
 import com.capstone.residentialcommunicationsapp.datamodels.AuthApi
+import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerApi
 import com.capstone.residentialcommunicationsapp.datamodels.TenantApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -27,5 +28,6 @@ object ApiForAuthentication{
 
     val authApi : AuthApi = retrofit().create(AuthApi::class.java)
     val tenantApi : TenantApi = retrofit().create(TenantApi::class.java)
+    val propertyManagerApi : PropertyManagerApi = retrofit().create(PropertyManagerApi::class.java)
 
 }
