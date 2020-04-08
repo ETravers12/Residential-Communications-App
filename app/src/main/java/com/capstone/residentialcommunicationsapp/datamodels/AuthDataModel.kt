@@ -23,7 +23,7 @@ data class Tenant (
 
 data class PropertyManager (
     val id: Int,
-    val propertyManagerName: String,
+    val propertyName: String,
     val username: String,
     val password: String
 )

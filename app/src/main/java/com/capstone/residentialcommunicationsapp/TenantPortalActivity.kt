@@ -3,6 +3,7 @@ package com.capstone.residentialcommunicationsapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -31,22 +32,26 @@ class TenantPortalActivity : AppCompatActivity() {
         val tenLoginSubmit = findViewById<Button>(R.id.tenLoginSubmit)
         tenLoginSubmit.setOnClickListener {
             val intent = Intent(this, TenantHomeScreen::class.java)
-            startActivity(intent)
 
             //TODO - figure out how to call authentication endpoints from
             // a button click
-                //Test code to authenticate user
-    /*        val userName = findViewById<Button>(R.id.tenantUsername).text;
-            val password = findViewById<Button>(R.id.tenantPasswordInput).text;
+            //Test code to authenticate user
+            val userName = findViewById<EditText>(R.id.tenantUsername).text;
+            val password = findViewById<EditText>(R.id.tenantPasswordInput).text;
 
-            //model.loginTenant(userName, password);
+            model.loginTenant(userName.toString(), password.toString());
 
             //needed - respond if there's an error
             model.tenantLoginLiveData.observe(this, Observer<Tenant>{ user ->
-                intent.putExtra("text", user.username + "successfully logged in!");
+                if (user != null) {
+                    intent.putExtra("tenantId", user.id);
 
-                startActivity(intent)
-            })*/
+                    startActivity(intent)
+                }
+                else {
+                    // create new activity to handle error
+                }
+            })
         }
     }
 

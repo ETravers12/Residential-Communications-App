@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PropertyHomeScreen">
 
-    <Space
+    <TextView
         android:id="@+id/prop_home_text"
         android:layout_width="271dp"
         android:layout_height="408dp"
