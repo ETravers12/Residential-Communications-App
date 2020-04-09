@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tenant-home-text"
+        android:id="@+id/tenantHomeText"
         android:layout_width="286dp"
         android:layout_height="384dp"
         android:layout_marginBottom="150dp"

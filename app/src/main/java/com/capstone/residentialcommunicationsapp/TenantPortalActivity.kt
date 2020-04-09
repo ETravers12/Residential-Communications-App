@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -20,14 +19,6 @@ class TenantPortalActivity : AppCompatActivity() {
 
         val model: TenantViewModel by viewModels()
         model.fetchTenantUsers();
-
-        val placeholder = findViewById<TextView>(R.id.jsonPlaceholder)
-
-        // here, we're updating a placeholder
-        placeholder.text = "Loading...";
-        model.tenantUsersLiveData.observe(this, Observer<List<Tenant>>{ users ->
-            placeholder.text = "user " + users[0].tenantName + " retrieved";
-        })
 
         val tenLoginSubmit = findViewById<Button>(R.id.tenLoginSubmit)
         tenLoginSubmit.setOnClickListener {
@@ -49,7 +40,8 @@ class TenantPortalActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 else {
-                    // create new activity to handle error
+                    val intent = Intent(this, LoginErrorScreen::class.java)
+                    startActivity(intent)
                 }
             })
         }

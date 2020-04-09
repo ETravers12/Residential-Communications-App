@@ -1,0 +1,12 @@
+package com.capstone.residentialcommunicationsapp
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class LoginErrorScreen : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login_error_screen)
+    }
+}

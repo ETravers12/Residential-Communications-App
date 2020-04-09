@@ -23,7 +23,7 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         placeholder.text = "Loading...";
         model.propertyManagerUsersLiveData.observe(this, Observer<List<PropertyManager>>{ users ->
-            placeholder.text = "property user " + users[0].propertyManagerName + " retrieved"
+            placeholder.text = "property user " + users[0].propertyName + " retrieved"
         })
 
         val propCheckIssuesBtn = findViewById<Button>(R.id.propCheckIssuesBtn)
