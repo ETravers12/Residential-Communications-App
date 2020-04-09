@@ -73,7 +73,7 @@ interface PropertyManagerApi{
 
 interface IssueApi{
     @GET("issue/issue")
-    fun getIssueAsync(): Deferred<Response<Issue>>
+    fun getIssueAsync(): Deferred<Response<List<Issue>>>
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("issue/createIssue")

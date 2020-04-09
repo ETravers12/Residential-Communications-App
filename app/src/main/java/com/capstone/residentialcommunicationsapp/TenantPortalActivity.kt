@@ -24,8 +24,6 @@ class TenantPortalActivity : AppCompatActivity() {
         tenLoginSubmit.setOnClickListener {
             val intent = Intent(this, TenantHomeScreen::class.java)
 
-            //TODO - figure out how to call authentication endpoints from
-            // a button click
             //Test code to authenticate user
             val userName = findViewById<EditText>(R.id.tenantUsername).text;
             val password = findViewById<EditText>(R.id.tenantPasswordInput).text;
@@ -36,6 +34,10 @@ class TenantPortalActivity : AppCompatActivity() {
             model.tenantLoginLiveData.observe(this, Observer<Tenant>{ user ->
                 if (user != null) {
                     intent.putExtra("tenantId", user.id);
+                    intent.putExtra("name", user.tenantName)
+                    intent.putExtra("buildingNumber", user.buildNum)
+                    intent.putExtra("unitNumber", user.unitNum)
+                    intent.putExtra("propertyId", user.propId)
 
                     startActivity(intent)
                 }

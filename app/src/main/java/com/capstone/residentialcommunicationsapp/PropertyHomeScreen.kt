@@ -6,8 +6,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.capstone.residentialcommunicationsapp.datamodels.PropertyManager
 import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerViewModel
 
 class PropertyHomeScreen : AppCompatActivity() {
@@ -19,12 +17,16 @@ class PropertyHomeScreen : AppCompatActivity() {
         val model: PropertyManagerViewModel by viewModels()
         model.fetchPropertyManagerUsers();
 
-        val placeholder = findViewById<TextView>(R.id.prop_home_text)
+        /* model.issuesLiveData.observe(this, Observer {
+            Log.d(issue.type, "issues")
+        })*/
 
-        placeholder.text = "Loading...";
-        model.propertyManagerUsersLiveData.observe(this, Observer<List<PropertyManager>>{ users ->
-            placeholder.text = "property user " + users[0].propertyName + " retrieved"
-        })
+        val id = intent.getIntExtra("propertyManagerId", 0);
+        val name = intent.getStringExtra("name")
+
+        val propHomeText = findViewById<TextView>(R.id.prop_home_text)
+        propHomeText.text = "Property Manager ID: ${id}\nName: ${name}"
+
 
         val propCheckIssuesBtn = findViewById<Button>(R.id.propCheckIssuesBtn)
         propCheckIssuesBtn.setOnClickListener {

@@ -7,7 +7,7 @@
     tools:context=".PropertyPortalActivity">
 
     <EditText
-        android:id="@+id/pmUsername"
+        android:id="@+id/propertyManagerUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="340dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/pmPasswordInput"
+        android:id="@+id/propertyManagerPasswordInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="268dp"
@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:textSize="36sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/pmUsername"
+        app:layout_constraintBottom_toTopOf="@+id/propertyManagerUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,5 +55,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pmPasswordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/propertyManagerPasswordInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

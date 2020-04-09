@@ -15,12 +15,6 @@ class IssueRepository(private val api: IssueApi) : BaseRepository() {
             errorMessage = "Error Fetching Issue"
         )
 
-        /*val mutableList : MutableList<Issue> = ArrayList()
-
-        mutableList.add(authResponse!!)
-
-        return mutableList;*/
-
         return authResponse?.toMutableList();
 
     }
