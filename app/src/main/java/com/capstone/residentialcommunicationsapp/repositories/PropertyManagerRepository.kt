@@ -16,7 +16,6 @@ class PropertyManagerRepository(private val api: PropertyManagerApi) : BaseRepos
             errorMessage = "Error Fetching User"
         )
 
-        // the second '?' wasn't here before
         return authResponse?.toMutableList();
 
     }

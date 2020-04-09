@@ -4,13 +4,30 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.capstone.residentialcommunicationsapp.datamodels.Issue
+import com.capstone.residentialcommunicationsapp.datamodels.IssueViewModel
 
 class TenantHomeScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
+
+        val model: IssueViewModel by viewModels()
+        model.fetchIssues();
+
+        model.issuesLiveData.observe(this, Observer<Issue>{ issue ->
+            if (issue != null) {
+                val id = intent.getIntExtra("id", issue.id);
+                val type = intent.getStringExtra("type", issue.type)
+
+                startActivity(intent)
+            }
+
+        })
 
         val id = intent.getIntExtra("tenantId", 0);
 

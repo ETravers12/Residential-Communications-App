@@ -28,6 +28,16 @@ data class PropertyManager (
     val password: String
 )
 
+data class Issue (
+    val id: Int,
+    val type: String,
+    val description: String,
+    val urgencyLevel: Int,
+    val tenantId: Int,
+    val maintenanceId: Int,
+    val status: String
+)
+
 data class AuthRequest(
     val username: String,
     val password: String
@@ -59,4 +69,13 @@ interface PropertyManagerApi{
 
     @POST("propertyManager/login")
     fun checkPropertyManagerLogin(@Body request: AuthRequest): Deferred<Response<PropertyManager>>
+}
+
+interface IssueApi{
+    @GET("issue/issue")
+    fun getIssueAsync(): Deferred<Response<Issue>>
+
+    // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
+    @POST("issue/createIssue")
+    fun createIssue()
 }
