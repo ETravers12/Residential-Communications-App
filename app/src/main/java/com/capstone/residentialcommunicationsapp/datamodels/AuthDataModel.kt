@@ -38,6 +38,24 @@ data class Issue (
     val status: String
 )
 
+data class Property (
+    val id: Int,
+    val name: String,
+    val propertyManagerId: Int
+)
+
+data class Maintenance (
+    val id: Int,
+    val maintenanceName: String,
+    val phoneNumber: String
+)
+
+data class Notifications (
+    val id: Int,
+    val propertyId: Int,
+    val message: String
+)
+
 data class AuthRequest(
     val username: String,
     val password: String
@@ -72,10 +90,37 @@ interface PropertyManagerApi{
 }
 
 interface IssueApi{
-    @GET("issue/issue")
+    @GET("issue")
     fun getIssueAsync(): Deferred<Response<List<Issue>>>
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("issue/createIssue")
     fun createIssue()
+}
+
+interface PropertyApi{
+    @GET("property")
+    fun getPropertyAsync(): Deferred<Response<List<Property>>>
+
+    // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
+    @POST("property/createProperty")
+    fun createProperty()
+}
+
+interface MaintenanceApi{
+    @GET("maintenance")
+    fun getMaintenanceAsync(): Deferred<Response<List<Maintenance>>>
+
+    // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
+    @POST("maintenance/createMaintenance")
+    fun createMaintenance()
+}
+
+interface NotificationsApi{
+    @GET("notifications")
+    fun getNotificationsAsync(): Deferred<Response<List<Notifications>>>
+
+    // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
+    @POST("notifications/createNotification")
+    fun createNotification()
 }

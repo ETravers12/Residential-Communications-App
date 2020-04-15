@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.capstone.residentialcommunicationsapp.datamodels.Issue
 import com.capstone.residentialcommunicationsapp.datamodels.IssueViewModel
 
 class TenantHomeScreen : AppCompatActivity() {
@@ -17,9 +19,13 @@ class TenantHomeScreen : AppCompatActivity() {
         val model: IssueViewModel by viewModels()
         model.fetchIssues();
 
-       /* model.issuesLiveData.observe(this, Observer {
-            Log.d(issue.type, "issues")
-        })*/
+       model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
+           if (issue != null) {
+               val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
+               tenantHomeText.text = "Issue ID: ${issue[0].id}\nType: ${issue[0].type}\n" +
+                       "Description: ${issue[0].description}"
+           }
+        })
 
         val id = intent.getIntExtra("tenantId", 0);
         val name = intent.getStringExtra("name")
@@ -28,9 +34,9 @@ class TenantHomeScreen : AppCompatActivity() {
         val propId = intent.getIntExtra("propertyId", 0)
 
         // put passed in intent extras in text view
-        val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
+        /*val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
         tenantHomeText.text = "Tenant ID: ${id} \nName: ${name} \nBuilding Number: ${buildingNum}" +
-            "\nUnit Number: ${unitNum} \nProperty ID: ${propId}"
+            "\nUnit Number: ${unitNum} \nProperty ID: ${propId}"*/
 
         val issueCreationBtn = findViewById<Button>(R.id.issueCreationBtn)
         issueCreationBtn.setOnClickListener {

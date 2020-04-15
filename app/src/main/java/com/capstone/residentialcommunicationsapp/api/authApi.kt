@@ -4,6 +4,9 @@ import com.capstone.residentialcommunicationsapp.datamodels.AuthApi
 import com.capstone.residentialcommunicationsapp.datamodels.IssueApi
 import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerApi
 import com.capstone.residentialcommunicationsapp.datamodels.TenantApi
+import com.capstone.residentialcommunicationsapp.datamodels.PropertyApi
+import com.capstone.residentialcommunicationsapp.datamodels.MaintenanceApi
+import com.capstone.residentialcommunicationsapp.datamodels.NotificationsApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -31,5 +34,7 @@ object ApiForAuthentication{
     val tenantApi : TenantApi = retrofit().create(TenantApi::class.java)
     val propertyManagerApi : PropertyManagerApi = retrofit().create(PropertyManagerApi::class.java)
     val issueApi : IssueApi = retrofit().create(IssueApi::class.java)
-
+    val propertyApi : PropertyApi = retrofit().create(PropertyApi::class.java)
+    val maintenanceApi : MaintenanceApi = retrofit().create(MaintenanceApi::class.java)
+    val notificationsApi : NotificationsApi = retrofit().create(NotificationsApi::class.java)
 }
