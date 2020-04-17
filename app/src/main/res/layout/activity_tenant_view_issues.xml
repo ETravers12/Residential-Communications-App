@@ -7,7 +7,7 @@
     tools:context=".TenantViewIssues">
 
     <TextView
-        android:id="@+id/tenant-view-issues-box"
+        android:id="@+id/tenantViewIssuesBox"
         android:layout_width="295dp"
         android:layout_height="449dp"
         android:layout_marginBottom="100dp"

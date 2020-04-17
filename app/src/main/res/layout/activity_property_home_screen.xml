@@ -7,7 +7,7 @@
     tools:context=".PropertyHomeScreen">
 
     <TextView
-        android:id="@+id/prop_home_text"
+        android:id="@+id/propHomeText"
         android:layout_width="292dp"
         android:layout_height="317dp"
         android:layout_marginBottom="200dp"
@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/propCheckIssuesBtn"
+        android:id="@+id/propCheckMaintenanceBtn"
         android:layout_width="199dp"
         android:layout_height="50dp"
         android:layout_marginTop="500dp"
         android:layout_marginBottom="50dp"
-        android:text="View Work Orders"
+        android:text="Maintenance Directory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

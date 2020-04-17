@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerViewModel
+import androidx.lifecycle.Observer
+import com.capstone.residentialcommunicationsapp.datamodels.Issue
+import com.capstone.residentialcommunicationsapp.datamodels.IssueViewModel
 
 class PropertyHomeScreen : AppCompatActivity() {
 
@@ -14,23 +16,21 @@ class PropertyHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_property_home_screen)
 
-        val model: PropertyManagerViewModel by viewModels()
-        model.fetchPropertyManagerUsers();
+        val model: IssueViewModel by viewModels()
+        model.fetchIssues();
 
-        /* model.issuesLiveData.observe(this, Observer {
-            Log.d(issue.type, "issues")
-        })*/
-
-        val id = intent.getIntExtra("propertyManagerId", 0);
-        val name = intent.getStringExtra("name")
-
-        val propHomeText = findViewById<TextView>(R.id.prop_home_text)
-        propHomeText.text = "Property Manager ID: ${id}\nName: ${name}"
+        model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
+            if (issue != null) {
+                val propHomeText = findViewById<TextView>(R.id.propHomeText)
+                propHomeText.text = "Issue ID: ${issue[0].id}\nType: ${issue[0].type}\n" +
+                        "Description: ${issue[0].description}"
+            }
+        })
 
 
-        val propCheckIssuesBtn = findViewById<Button>(R.id.propCheckIssuesBtn)
-        propCheckIssuesBtn.setOnClickListener {
-            val intent = Intent(this, PropertyViewIssues::class.java)
+        val propCheckMaintenanceBtn = findViewById<Button>(R.id.propCheckMaintenanceBtn)
+        propCheckMaintenanceBtn.setOnClickListener {
+            val intent = Intent(this, PropertyMaintenanceDirectory::class.java)
             startActivity(intent)
         }
 

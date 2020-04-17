@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.capstone.residentialcommunicationsapp.datamodels.Issue
-import com.capstone.residentialcommunicationsapp.datamodels.IssueViewModel
+import com.capstone.residentialcommunicationsapp.datamodels.Notifications
+import com.capstone.residentialcommunicationsapp.datamodels.NotificationsViewModel
 
 class TenantHomeScreen : AppCompatActivity() {
 
@@ -16,27 +16,23 @@ class TenantHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
 
-        val model: IssueViewModel by viewModels()
-        model.fetchIssues();
+        val announcementText = findViewById<TextView>(R.id.tenantHomeText)
+        announcementText.text = "COMMUNITY ANNOUNCEMENTS\n\n"
 
-       model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
-           if (issue != null) {
+        val model: NotificationsViewModel by viewModels()
+        model.fetchNotifications();
+
+       model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ notification ->
+           if (notification != null) {
                val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
-               tenantHomeText.text = "Issue ID: ${issue[0].id}\nType: ${issue[0].type}\n" +
-                       "Description: ${issue[0].description}"
+               tenantHomeText.text = "Community Announcements\n\nProperty ID: ${notification[0].propertyId}\n" +
+                       "Message: ${notification[0].message}\n\n"
+           }
+           else {
+               val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
+               tenantHomeText.text = "No New Announcements"
            }
         })
-
-        val id = intent.getIntExtra("tenantId", 0);
-        val name = intent.getStringExtra("name")
-        val buildingNum = intent.getIntExtra("buildingNumber", 0)
-        val unitNum = intent.getIntExtra("unitNumber", 0)
-        val propId = intent.getIntExtra("propertyId", 0)
-
-        // put passed in intent extras in text view
-        /*val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
-        tenantHomeText.text = "Tenant ID: ${id} \nName: ${name} \nBuilding Number: ${buildingNum}" +
-            "\nUnit Number: ${unitNum} \nProperty ID: ${propId}"*/
 
         val issueCreationBtn = findViewById<Button>(R.id.issueCreationBtn)
         issueCreationBtn.setOnClickListener {

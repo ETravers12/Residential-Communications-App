@@ -46,7 +46,7 @@ data class Property (
 
 data class Maintenance (
     val id: Int,
-    val maintenanceName: String,
+    val name: String,
     val phoneNumber: String
 )
 

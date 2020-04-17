@@ -18,7 +18,7 @@
         <activity android:name=".TenantViewIssues" />
         <activity android:name=".TenantCreateIssue" />
         <activity android:name=".PropertyCreateAnnouncement" />
-        <activity android:name=".PropertyViewIssues" />
+        <activity android:name=".PropertyMaintenanceDirectory" />
         <activity android:name=".PropertyHomeScreen" />
         <activity android:name=".TenantHomeScreen" />
         <activity android:name=".PropertyPortalActivity" />

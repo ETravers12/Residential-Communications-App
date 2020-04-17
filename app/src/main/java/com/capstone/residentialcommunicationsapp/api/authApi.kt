@@ -1,12 +1,6 @@
 package com.capstone.residentialcommunicationsapp.api
 
-import com.capstone.residentialcommunicationsapp.datamodels.AuthApi
-import com.capstone.residentialcommunicationsapp.datamodels.IssueApi
-import com.capstone.residentialcommunicationsapp.datamodels.PropertyManagerApi
-import com.capstone.residentialcommunicationsapp.datamodels.TenantApi
-import com.capstone.residentialcommunicationsapp.datamodels.PropertyApi
-import com.capstone.residentialcommunicationsapp.datamodels.MaintenanceApi
-import com.capstone.residentialcommunicationsapp.datamodels.NotificationsApi
+import com.capstone.residentialcommunicationsapp.datamodels.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -24,7 +18,7 @@ object ApiForAuthentication{
         // because when your app is running on android, "localhost"
         // refers to the device itself.
         // to find this, use ifconfig | grep inet on terminal
-        .baseUrl("http://192.168.1.184:8080/api/")
+        .baseUrl("http://residentialcommapp-env.eba-3bzw8zwk.us-east-1.elasticbeanstalk.com/api/")
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
