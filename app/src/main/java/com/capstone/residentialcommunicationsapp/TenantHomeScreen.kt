@@ -5,10 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import com.capstone.residentialcommunicationsapp.datamodels.Notifications
+import com.capstone.residentialcommunicationsapp.datamodels.NotificationsViewModel
 
 class TenantHomeScreen : AppCompatActivity() {
 
@@ -17,15 +20,21 @@ class TenantHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
 
-        val recycler = findViewById<RecyclerView>(R.id.tenantRecyclerAnnouncement)
+        val recycler = findViewById<RecyclerView>(R.id.tenantHomeRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        val notes = ArrayList<Notifications>()
+        var notes = listOf<Notifications>()
 
-        // NOT SURE WHAT TO DO HERE TO GET THE LIST OF NOTIFICATIONS TO DISPLAY. Also, is it ok to keep it as an arraylist here instead of a mutableList?
+        val model: NotificationsViewModel by viewModels()
+        model.fetchNotifications();
 
-        val adapter = Adapter(notes)
+        model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ note ->
+            if (note != null) {
+                val adapter = Adapter(note)
+                recycler.adapter = adapter
+            }
+        })
 
         val issueCreationBtn = findViewById<Button>(R.id.issueCreationBtn)
         issueCreationBtn.setOnClickListener {

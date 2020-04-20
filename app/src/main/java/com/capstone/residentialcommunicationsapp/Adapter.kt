@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.residentialcommunicationsapp.datamodels.Notifications
 
-class Adapter(val notificationsList : MutableList<Notifications>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(val notificationsList : List<Notifications>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val value = LayoutInflater.from(parent?.context).inflate(R.layout.tenant_home_recycler_view, parent, false)
         return ViewHolder(value)
