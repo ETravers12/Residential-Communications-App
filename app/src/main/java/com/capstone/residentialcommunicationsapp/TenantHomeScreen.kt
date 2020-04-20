@@ -1,38 +1,31 @@
 package com.capstone.residentialcommunicationsapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import androidx.activity.viewModels
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.capstone.residentialcommunicationsapp.datamodels.Notifications
-import com.capstone.residentialcommunicationsapp.datamodels.NotificationsViewModel
 
 class TenantHomeScreen : AppCompatActivity() {
 
+    @SuppressLint("WrongViewCast", "WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
 
-        val announcementText = findViewById<TextView>(R.id.tenantHomeText)
-        announcementText.text = "COMMUNITY ANNOUNCEMENTS\n\n"
+        val recycler = findViewById<RecyclerView>(R.id.tenantRecyclerAnnouncement)
 
-        val model: NotificationsViewModel by viewModels()
-        model.fetchNotifications();
+        recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-       model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ notification ->
-           if (notification != null) {
-               val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
-               tenantHomeText.text = "Community Announcements\n\nProperty ID: ${notification[0].propertyId}\n" +
-                       "Message: ${notification[0].message}\n\n"
-           }
-           else {
-               val tenantHomeText = findViewById<TextView>(R.id.tenantHomeText)
-               tenantHomeText.text = "No New Announcements"
-           }
-        })
+        val notes = ArrayList<Notifications>()
+
+        // NOT SURE WHAT TO DO HERE TO GET THE LIST OF NOTIFICATIONS TO DISPLAY. Also, is it ok to keep it as an arraylist here instead of a mutableList?
+
+        val adapter = Adapter(notes)
 
         val issueCreationBtn = findViewById<Button>(R.id.issueCreationBtn)
         issueCreationBtn.setOnClickListener {

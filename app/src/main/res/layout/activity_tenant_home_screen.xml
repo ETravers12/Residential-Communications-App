@@ -31,11 +31,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tenantHomeText"
-        android:layout_width="286dp"
-        android:layout_height="384dp"
-        android:layout_marginBottom="150dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tenantHomeRecycler"
+        android:layout_width="302dp"
+        android:layout_height="379dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
