@@ -7,9 +7,9 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.lifecycle.Observer
 import com.capstone.residentialcommunicationsapp.datamodels.Notifications
 import com.capstone.residentialcommunicationsapp.datamodels.NotificationsViewModel
 
@@ -24,14 +24,12 @@ class TenantHomeScreen : AppCompatActivity() {
 
         recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
-        var notes = listOf<Notifications>()
-
         val model: NotificationsViewModel by viewModels()
         model.fetchNotifications();
 
         model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ note ->
             if (note != null) {
-                val adapter = Adapter(note)
+                val adapter = Adapter(this, note)
                 recycler.adapter = adapter
             }
         })
