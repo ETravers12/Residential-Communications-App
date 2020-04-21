@@ -14,7 +14,7 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
 
     companion object {
         private const val TENANT_HOME = 0
-        private const val PROPERTY_HOME = 1
+        private const val ISSUES = 1
         private const val PROPERTY_MAINTENANCE = 2
     }
 
@@ -25,7 +25,7 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
                     .inflate(R.layout.tenant_home_recycler_view, parent, false)
                 NotificationsViewHolder(view)
             }
-            PROPERTY_HOME -> {
+            ISSUES -> {
                 val view = LayoutInflater.from(context)
                     .inflate(R.layout.property_home_recycler_view, parent, false)
                 IssuesViewHolder(view)
@@ -57,7 +57,7 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
         val comparable = adapterDataList[position]
         return when (comparable) {
             is Notifications -> TENANT_HOME
-            is Issue -> PROPERTY_HOME
+            is Issue -> ISSUES
             is Maintenance -> PROPERTY_MAINTENANCE
             else -> throw IllegalArgumentException("Invalid type of data " + position)
         }
@@ -81,20 +81,11 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
             val propertyRecyclerIssuesUrgency = itemView.findViewById(R.id.propertyRecyclerIssuesUrgency) as TextView
             propertyRecyclerIssuesUrgency?.text = "Urgency Level: " + item.urgencyLevel.toString()
 
-            val tenantRecyclerIssuesUrgency = itemView.findViewById(R.id.tenantRecyclerIssuesUrgency) as TextView
-            tenantRecyclerIssuesUrgency?.text = "Urgency Level: " + item.urgencyLevel.toString()
-
             val propertyRecyclerIssuesType = itemView.findViewById(R.id.propertyRecyclerIssuesType) as TextView
             propertyRecyclerIssuesType?.text = "Type: " + item.type
 
-            val tenantRecyclerIssuesType = itemView.findViewById(R.id.tenantRecyclerIssuesType) as TextView
-            tenantRecyclerIssuesType?.text = "Type: " + item.type
-
             val propertyRecyclerIssuesDescription = itemView.findViewById(R.id.propertyRecyclerIssuesDescription) as TextView
             propertyRecyclerIssuesDescription?.text = "Description: " + item.description
-
-            val tenantRecyclerIssuesDescription = itemView.findViewById(R.id.tenantRecyclerIssuesDescription) as TextView
-            tenantRecyclerIssuesDescription?.text = "Description: " + item.description
         }
     }
 

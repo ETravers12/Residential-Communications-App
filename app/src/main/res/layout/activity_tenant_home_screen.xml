@@ -33,12 +33,29 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tenantHomeRecycler"
-        android:layout_width="302dp"
-        android:layout_height="379dp"
+        android:layout_width="298dp"
+        android:layout_height="268dp"
         android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.779" />
+
+    <TextView
+        android:id="@+id/tenantHomeAnnouncementText"
+        android:layout_width="305dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="500dp"
+        android:text="Community Announcements"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

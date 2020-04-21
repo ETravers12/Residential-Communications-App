@@ -7,11 +7,27 @@
     tools:context=".TenantViewIssues">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tenantIssuesRecycler"
-        android:layout_width="351dp"
-        android:layout_height="628dp"
+        android:id="@+id/propertyIssuesRecycler"
+        android:layout_width="313dp"
+        android:layout_height="476dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
+
+    <TextView
+        android:id="@+id/tenantViewIssuesText"
+        android:layout_width="217dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="500dp"
+        android:text="Issues"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
