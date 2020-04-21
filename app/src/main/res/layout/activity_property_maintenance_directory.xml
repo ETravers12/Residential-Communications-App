@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".PropertyMaintenanceDirectory">
 
-    <TextView
-        android:id="@+id/propMaintenanceDirectoryBox"
-        android:layout_width="295dp"
-        android:layout_height="451dp"
-        android:layout_marginBottom="110dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/propertyMaintenanceRecycler"
+        android:layout_width="342dp"
+        android:layout_height="493dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addMaintenanceBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="Add to Maintenance Directory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
