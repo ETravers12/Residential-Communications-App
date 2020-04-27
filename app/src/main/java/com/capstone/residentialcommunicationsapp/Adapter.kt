@@ -78,6 +78,13 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
     inner class IssuesViewHolder(itemView: View) : ViewHolder<Issue>(itemView) {
 
         override fun bind(item: Issue) {
+
+            /*val propertyRecyclerIssuesBuildingNumber = itemView.findViewById(R.id.propertyRecyclerIssuesBuildingNumber) as TextView
+            propertyRecyclerIssuesBuildingNumber?.text = "Building Number: " + item.tenant
+
+            val propertyRecyclerIssuesUnitNumber = itemView.findViewById(R.id.propertyRecyclerIssuesUnitNumber) as TextView
+            propertyRecyclerIssuesUnitNumber?.text = "Unit Number: " + item.tenant*/
+
             val propertyRecyclerIssuesUrgency = itemView.findViewById(R.id.propertyRecyclerIssuesUrgency) as TextView
             propertyRecyclerIssuesUrgency?.text = "Urgency Level: " + item.urgencyLevel.toString()
 

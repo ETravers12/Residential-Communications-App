@@ -17,12 +17,16 @@ class PropertyMaintenanceDirectory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_property_maintenance_directory)
 
+        var intent = getIntent()
+
+        val pmId = intent.getIntExtra("propertyManagerId", 0)
+
         val recycler = findViewById<RecyclerView>(R.id.propertyMaintenanceRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val model: MaintenanceViewModel by viewModels()
-        model.fetchMaintenance();
+        model.fetchMaintenanceByPropertyManagerId(pmId);
 
         model.maintenanceLiveData.observe(this, Observer<List<Maintenance>>{ maintenance ->
             if (maintenance != null) {

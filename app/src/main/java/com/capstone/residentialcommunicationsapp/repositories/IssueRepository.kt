@@ -18,4 +18,28 @@ class IssueRepository(private val api: IssueApi) : BaseRepository() {
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun getIssuesByTenantId(tenantId: Int): MutableList<Issue>? {
+
+        //safeApiCall is defined in BaseRepository.kt (https://gist.github.com/navi25/67176730f5595b3f1fb5095062a92f15)
+        val authResponse = safeApiCall(
+            call = { api.getIssueByTenantAsync(tenantId).await() },
+            errorMessage = "Error Fetching Issue"
+        )
+
+        return authResponse?.toMutableList();
+
+    }
+
+    suspend fun getIssuesByPropertyManagerId(propertyManagerId: Int): MutableList<Issue>? {
+
+        //safeApiCall is defined in BaseRepository.kt (https://gist.github.com/navi25/67176730f5595b3f1fb5095062a92f15)
+        val authResponse = safeApiCall(
+            call = { api.getIssueByPropertyManagerAsync(propertyManagerId).await() },
+            errorMessage = "Error Fetching Issue"
+        )
+
+        return authResponse?.toMutableList();
+
+    }
 }

@@ -20,12 +20,14 @@ class TenantHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
 
+        val tenId = intent.getIntExtra("tenantId", 0)
+
         val recycler = findViewById<RecyclerView>(R.id.tenantHomeRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val model: NotificationsViewModel by viewModels()
-        model.fetchNotifications();
+        model.fetchNotificationsByTenantId(tenId);
 
         model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ note ->
             if (note != null) {
@@ -42,7 +44,9 @@ class TenantHomeScreen : AppCompatActivity() {
 
         val tenCheckIssuesBtn = findViewById<Button>(R.id.tenCheckIssuesBtn)
         tenCheckIssuesBtn.setOnClickListener {
+            val tenId = intent.getIntExtra("tenantId", 0)
             val intent = Intent(this, TenantViewIssues::class.java)
+            intent.putExtra("tenantId", tenId)
             startActivity(intent)
         }
     }

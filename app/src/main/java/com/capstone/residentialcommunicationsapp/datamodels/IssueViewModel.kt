@@ -28,5 +28,19 @@ class IssueViewModel : ViewModel(){
         }
     }
 
+    fun fetchIssuesByTenantId(tenantId: Int){
+        scope.launch {
+            val issues = repository.getIssuesByTenantId(tenantId)
+            issuesLiveData.postValue(issues)
+        }
+    }
+
+    fun fetchIssuesByPropertyManagerId(propertyManagerId: Int){
+        scope.launch {
+            val issues = repository.getIssuesByPropertyManagerId(propertyManagerId)
+            issuesLiveData.postValue(issues)
+        }
+    }
+
     fun cancelAllRequests() = coroutineContext.cancel()
 }

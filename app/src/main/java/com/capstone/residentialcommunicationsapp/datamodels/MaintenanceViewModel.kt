@@ -28,5 +28,12 @@ class MaintenanceViewModel : ViewModel(){
         }
     }
 
+    fun fetchMaintenanceByPropertyManagerId(propertyManagerId:Int){
+        scope.launch {
+            val maintenance = repository.getMaintenanceByPropertyManagerId(propertyManagerId)
+            maintenanceLiveData.postValue(maintenance)
+        }
+    }
+
     fun cancelAllRequests() = coroutineContext.cancel()
 }

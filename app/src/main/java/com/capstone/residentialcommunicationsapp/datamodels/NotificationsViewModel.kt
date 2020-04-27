@@ -28,5 +28,12 @@ class NotificationsViewModel : ViewModel(){
         }
     }
 
+    fun fetchNotificationsByTenantId(tenantId: Int){
+        scope.launch {
+            val notifications = repository.getNotificationsByTenantId(tenantId)
+            notificationsLiveData.postValue(notifications)
+        }
+    }
+
     fun cancelAllRequests() = coroutineContext.cancel()
 }

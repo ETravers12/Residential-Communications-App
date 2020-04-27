@@ -17,12 +17,14 @@ class PropertyHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_property_home_screen)
 
+        val pmId = intent.getIntExtra("propertyManagerId", 0)
+
         val recycler = findViewById<RecyclerView>(R.id.propertyHomeRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val model: IssueViewModel by viewModels()
-        model.fetchIssues();
+        model.fetchIssuesByPropertyManagerId(pmId);
 
         model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
             if (issue != null) {
@@ -33,7 +35,9 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         val propCheckMaintenanceBtn = findViewById<Button>(R.id.propCheckMaintenanceBtn)
         propCheckMaintenanceBtn.setOnClickListener {
+            val pmId = intent.getIntExtra("propertyManagerId", 0);
             val intent = Intent(this, PropertyMaintenanceDirectory::class.java)
+            intent.putExtra("propertyManagerId", pmId);
             startActivity(intent)
         }
 

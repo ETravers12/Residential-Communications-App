@@ -18,4 +18,16 @@ class NotificationsRepository(private val api: NotificationsApi) : BaseRepositor
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun getNotificationsByTenantId(tenantId: Int): MutableList<Notifications>? {
+
+        //safeApiCall is defined in BaseRepository.kt (https://gist.github.com/navi25/67176730f5595b3f1fb5095062a92f15)
+        val authResponse = safeApiCall(
+            call = { api.getNotificationsByTenantAsync(tenantId).await() },
+            errorMessage = "Error Fetching Notifications"
+        )
+
+        return authResponse?.toMutableList();
+
+    }
 }

@@ -15,12 +15,14 @@ class TenantViewIssues : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_view_issues)
 
+        val tenId = intent.getIntExtra("tenantId", 0)
+
         val recycler = findViewById<RecyclerView>(R.id.propertyIssuesRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val model: IssueViewModel by viewModels()
-        model.fetchIssues();
+        model.fetchIssuesByTenantId(tenId);
 
         model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
             if (issue != null) {

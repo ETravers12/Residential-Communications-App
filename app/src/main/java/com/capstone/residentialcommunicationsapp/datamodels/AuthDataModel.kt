@@ -5,6 +5,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 data class Auth(
     val password: String,
@@ -93,6 +94,13 @@ interface IssueApi{
     @GET("issue")
     fun getIssueAsync(): Deferred<Response<List<Issue>>>
 
+    @GET("issue")
+    fun getIssueByTenantAsync(@Query("tenantId") tenantId: Int): Deferred<Response<List<Issue>>>
+
+    @GET("issue")
+    fun getIssueByPropertyManagerAsync(@Query("propertyManagerId") propertyManagerId: Int):
+            Deferred<Response<List<Issue>>>
+
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("issue/createIssue")
     fun createIssue()
@@ -111,6 +119,10 @@ interface MaintenanceApi{
     @GET("maintenance")
     fun getMaintenanceAsync(): Deferred<Response<List<Maintenance>>>
 
+    @GET("maintenance")
+    fun getMaintenanceByPropertyManagerAsync(@Query("propertyManagerId")
+                                             propertyManagerId:Int): Deferred<Response<List<Maintenance>>>
+
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("maintenance/createMaintenance")
     fun createMaintenance()
@@ -119,6 +131,10 @@ interface MaintenanceApi{
 interface NotificationsApi{
     @GET("notifications")
     fun getNotificationsAsync(): Deferred<Response<List<Notifications>>>
+
+    @GET("notifications")
+    fun getNotificationsByTenantAsync(@Query("tenantId") tenantId: Int):
+            Deferred<Response<List<Notifications>>>
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("notifications/createNotification")
