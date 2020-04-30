@@ -37,7 +37,9 @@ class PropertyMaintenanceDirectory : AppCompatActivity() {
 
         val addMaintenanceBtn = findViewById<Button>(R.id.addMaintenanceBtn)
         addMaintenanceBtn.setOnClickListener {
+            val pmId = intent.getIntExtra("propertyManagerId", 0);
             val intent = Intent(this, AddToMaintenanceDirectory::class.java)
+            intent.putExtra("propertyManagerId", pmId)
             startActivity(intent)
         }
     }

@@ -13,7 +13,9 @@ class PropertySuccessfulCreation : AppCompatActivity() {
 
         val propertyReturnBtn = findViewById<Button>(R.id.propertyReturnBtn)
         propertyReturnBtn.setOnClickListener {
+            val pmId = intent.getIntExtra("propertyManagerId", 0);
             val intent = Intent(this, PropertyHomeScreen::class.java)
+            intent.putExtra("propertyManagerId", pmId);
             startActivity(intent)
         }
     }

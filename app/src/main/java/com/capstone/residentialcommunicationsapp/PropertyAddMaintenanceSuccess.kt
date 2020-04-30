@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class PropertyCreateAnnouncement : AppCompatActivity() {
+class PropertyAddMaintenanceSuccess : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_property_create_announcement)
+        setContentView(R.layout.activity_property_add_maintenance_success)
 
-        val createAnnouncementBtn = findViewById<Button>(R.id.createAnnouncementBtn)
-        createAnnouncementBtn.setOnClickListener {
+        val propertyReturnToHomeBtn = findViewById<Button>(R.id.propertyReturnToHomeBtn)
+        propertyReturnToHomeBtn.setOnClickListener {
             val pmId = intent.getIntExtra("propertyManagerId", 0);
-            val intent = Intent(this, PropertySuccessfulCreation::class.java)
+            val intent = Intent(this, PropertyHomeScreen::class.java)
             intent.putExtra("propertyManagerId", pmId);
             startActivity(intent)
         }

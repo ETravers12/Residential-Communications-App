@@ -43,7 +43,9 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         val createAnnouncementBtn = findViewById<Button>(R.id.createAnnouncementBtn)
         createAnnouncementBtn.setOnClickListener {
+            val pmId = intent.getIntExtra("propertyManagerId", 0);
             val intent = Intent(this, PropertyCreateAnnouncement::class.java)
+            intent.putExtra("propertyManagerId", pmId);
             startActivity(intent)
         }
     }
