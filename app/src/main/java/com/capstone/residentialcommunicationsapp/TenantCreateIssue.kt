@@ -18,7 +18,9 @@ class TenantCreateIssue : AppCompatActivity() {
 
         val createIssueBtn = findViewById<Button>(R.id.createIssueBtn)
         createIssueBtn.setOnClickListener {
+            val tenId = intent.getIntExtra("tenantId", 0)
             val intent = Intent(this, TenantSuccessfulCreation::class.java)
+            intent.putExtra("tenantId", tenId)
 
             val type = typeInput.text
             val urgency = urgencyLevelInput.text

@@ -1,6 +1,8 @@
 package com.capstone.residentialcommunicationsapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -30,6 +32,14 @@ class TenantViewIssues : AppCompatActivity() {
                 recycler.adapter = adapter
             }
         })
+
+        val tenantViewIssuesReturnHomeBtn = findViewById<Button>(R.id.tenantViewIssuesReturnHomeBtn)
+        tenantViewIssuesReturnHomeBtn.setOnClickListener {
+            val tenId = intent.getIntExtra("tenantId", 0)
+            val intent = Intent(this, TenantHomeScreen::class.java)
+            intent.putExtra("tenantId", tenId)
+            startActivity(intent)
+        }
     }
 
 }

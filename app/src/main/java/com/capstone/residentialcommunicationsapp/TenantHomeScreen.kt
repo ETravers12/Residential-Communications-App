@@ -38,7 +38,9 @@ class TenantHomeScreen : AppCompatActivity() {
 
         val issueCreationBtn = findViewById<Button>(R.id.issueCreationBtn)
         issueCreationBtn.setOnClickListener {
+            val tenId = intent.getIntExtra("tenantId", 0)
             val intent = Intent(this, TenantCreateIssue::class.java)
+            intent.putExtra("tenantId", tenId)
             startActivity(intent)
         }
 

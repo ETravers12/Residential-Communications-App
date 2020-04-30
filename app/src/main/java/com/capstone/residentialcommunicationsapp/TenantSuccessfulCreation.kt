@@ -13,7 +13,9 @@ class TenantSuccessfulCreation : AppCompatActivity() {
 
         val tenantReturnBtn = findViewById<Button>(R.id.tenantReturnBtn)
         tenantReturnBtn.setOnClickListener {
+            val tenId = intent.getIntExtra("tenantId", 0)
             val intent = Intent(this, TenantHomeScreen::class.java)
+            intent.putExtra("tenantId", tenId)
             startActivity(intent)
         }
     }
