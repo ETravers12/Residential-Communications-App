@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.capstone.residentialcommunicationsapp.datamodels.Issue
 import com.capstone.residentialcommunicationsapp.datamodels.Maintenance
 import com.capstone.residentialcommunicationsapp.datamodels.Notifications
+import com.capstone.residentialcommunicationsapp.datamodels.TenantIssue
 
 class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerView.Adapter<Adapter.ViewHolder<*>>() {
 
     companion object {
         private const val TENANT_HOME = 0
-        private const val ISSUES = 1
+        private const val TENANT_ISSUES = 1
         private const val PROPERTY_MAINTENANCE = 2
+        private const val PROPERTY_ISSUES = 4
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<*> {
@@ -25,15 +27,20 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
                     .inflate(R.layout.tenant_home_recycler_view, parent, false)
                 NotificationsViewHolder(view)
             }
-            ISSUES -> {
+            TENANT_ISSUES -> {
                 val view = LayoutInflater.from(context)
-                    .inflate(R.layout.property_home_recycler_view, parent, false)
+                    .inflate(R.layout.tenant_view_issues_recycler_view, parent, false)
                 IssuesViewHolder(view)
             }
             PROPERTY_MAINTENANCE -> {
                 val view = LayoutInflater.from(context)
                     .inflate(R.layout.property_maintenance_recycler_view, parent, false)
                 MaintenanceViewHolder(view)
+            }
+            PROPERTY_ISSUES -> {
+                val view = LayoutInflater.from(context)
+                    .inflate(R.layout.property_home_recycler_view, parent, false)
+                TenantIssueViewHolder(view)
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }
@@ -49,6 +56,7 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
             is NotificationsViewHolder -> holder.bind(element as Notifications)
             is IssuesViewHolder -> holder.bind(element as Issue)
             is MaintenanceViewHolder -> holder.bind(element as Maintenance)
+            is TenantIssueViewHolder -> holder.bind(element as TenantIssue)
             else -> throw IllegalArgumentException()
         }
     }
@@ -57,8 +65,9 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
         val comparable = adapterDataList[position]
         return when (comparable) {
             is Notifications -> TENANT_HOME
-            is Issue -> ISSUES
+            is Issue -> TENANT_ISSUES
             is Maintenance -> PROPERTY_MAINTENANCE
+            is TenantIssue -> PROPERTY_ISSUES
             else -> throw IllegalArgumentException("Invalid type of data " + position)
         }
     }
@@ -75,24 +84,38 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
         }
     }
 
+    inner class TenantIssueViewHolder(itemView: View) : ViewHolder<TenantIssue>(itemView) {
+
+        override fun bind(item: TenantIssue) {
+            val propertyRecyclerIssuesBuildingNumber = itemView.findViewById(R.id.propertyRecyclerIssuesBuildingNumber) as TextView
+            propertyRecyclerIssuesBuildingNumber?.text = "Building Number: " + item.tenant.buildNum
+
+            val propertyRecyclerIssuesUnitNumber = itemView.findViewById(R.id.propertyRecyclerIssuesUnitNumber) as TextView
+            propertyRecyclerIssuesUnitNumber?.text = "Unit Number: " + item.tenant.unitNum
+
+            val propertyRecyclerIssuesUrgency = itemView.findViewById(R.id.propertyRecyclerIssuesUrgency) as TextView
+            propertyRecyclerIssuesUrgency?.text = "Urgency Level: " + item.issue.urgencyLevel.toString()
+
+            val propertyRecyclerIssuesType = itemView.findViewById(R.id.propertyRecyclerIssuesType) as TextView
+            propertyRecyclerIssuesType?.text = "Type: " + item.issue.type
+
+            val propertyRecyclerIssuesDescription = itemView.findViewById(R.id.propertyRecyclerIssuesDescription) as TextView
+            propertyRecyclerIssuesDescription?.text = "Description: " + item.issue.description
+        }
+    }
+
     inner class IssuesViewHolder(itemView: View) : ViewHolder<Issue>(itemView) {
 
         override fun bind(item: Issue) {
 
-            /*val propertyRecyclerIssuesBuildingNumber = itemView.findViewById(R.id.propertyRecyclerIssuesBuildingNumber) as TextView
-            propertyRecyclerIssuesBuildingNumber?.text = "Building Number: " + item.tenant
+            val tenantRecyclerIssuesUrgency = itemView.findViewById(R.id.tenantRecyclerIssuesUrgency) as TextView
+            tenantRecyclerIssuesUrgency?.text = "Urgency Level: " + item.urgencyLevel.toString()
 
-            val propertyRecyclerIssuesUnitNumber = itemView.findViewById(R.id.propertyRecyclerIssuesUnitNumber) as TextView
-            propertyRecyclerIssuesUnitNumber?.text = "Unit Number: " + item.tenant*/
+            val tenantRecyclerIssuesType = itemView.findViewById(R.id.tenantRecyclerIssuesType) as TextView
+            tenantRecyclerIssuesType?.text = "Type: " + item.type
 
-            val propertyRecyclerIssuesUrgency = itemView.findViewById(R.id.propertyRecyclerIssuesUrgency) as TextView
-            propertyRecyclerIssuesUrgency?.text = "Urgency Level: " + item.urgencyLevel.toString()
-
-            val propertyRecyclerIssuesType = itemView.findViewById(R.id.propertyRecyclerIssuesType) as TextView
-            propertyRecyclerIssuesType?.text = "Type: " + item.type
-
-            val propertyRecyclerIssuesDescription = itemView.findViewById(R.id.propertyRecyclerIssuesDescription) as TextView
-            propertyRecyclerIssuesDescription?.text = "Description: " + item.description
+            val tenantRecyclerIssuesDescription = itemView.findViewById(R.id.tenantRecyclerIssuesDescription) as TextView
+            tenantRecyclerIssuesDescription?.text = "Description: " + item.description
         }
     }
 

@@ -17,7 +17,7 @@ class TenantViewIssues : AppCompatActivity() {
 
         val tenId = intent.getIntExtra("tenantId", 0)
 
-        val recycler = findViewById<RecyclerView>(R.id.propertyIssuesRecycler)
+        val recycler = findViewById<RecyclerView>(R.id.tenantIssuesRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 

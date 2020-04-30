@@ -7,7 +7,7 @@
     tools:context=".TenantViewIssues">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/propertyIssuesRecycler"
+        android:id="@+id/tenantIssuesRecycler"
         android:layout_width="313dp"
         android:layout_height="476dp"
         android:layout_marginTop="100dp"

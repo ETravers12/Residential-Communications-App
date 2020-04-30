@@ -18,68 +18,58 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/issue-type"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="500dp"
-        android:text="Issue Type"
+        android:id="@+id/createIssueTextview"
+        android:layout_width="229dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="450dp"
+        android:text="Create a New Issue"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/issue-type-box"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="400dp"
+    <EditText
+        android:id="@+id/issueTypeText"
+        android:layout_width="232dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="250dp"
+        android:ems="10"
+        android:hint="Issue Type (plumbing, etc)"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/urgency-level"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="300dp"
-        android:text="Urgency Level"
-        android:textSize="24sp"
+    <EditText
+        android:id="@+id/issueUrgencyLevelText"
+        android:layout_width="230dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="150dp"
+        android:ems="10"
+        android:hint="Urgency Level (1-5)"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/urgency-level-box"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="200dp"
+    <EditText
+        android:id="@+id/issueDescriptionText"
+        android:layout_width="232dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Brief Description of Issue"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
 
-    <TextView
-        android:id="@+id/issue-description"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="100dp"
-        android:text="Issue Description"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/issue-description-box"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
