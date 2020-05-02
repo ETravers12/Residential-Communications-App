@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.residentialcommunicationsapp.datamodels.TenantIssue
-import com.capstone.residentialcommunicationsapp.datamodels.TenantIssueViewModel
+import com.capstone.residentialcommunicationsapp.datamodels.*
 
 class PropertyHomeScreen : AppCompatActivity() {
 
@@ -23,13 +22,31 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        val model: TenantIssueViewModel by viewModels()
-        model.fetchTenantIssuesByPropertyManagerId(pmId);
+        val model: IssueViewModel by viewModels()
+        val TenantModel: TenantViewModel by viewModels()
 
-        model.tenantIssuesLiveData.observe(this, Observer<List<TenantIssue>>{ tenantIssue ->
-            if (tenantIssue != null) {
-                val adapter = Adapter(this, tenantIssue)
-                recycler.adapter = adapter
+        model.fetchIssuesByPropertyManagerId(pmId);
+        TenantModel.fetchTenantUsers();
+
+        model.issuesLiveData.observe(this, Observer<List<Issue>>{ issues ->
+            if (issues != null) {
+                TenantModel.tenantUsersLiveData.observe(this, Observer<List<Tenant>> { tenants ->
+                    val tenantIssueAgg: MutableList<TenantIssue> = mutableListOf();
+
+                    if(tenants != null) {
+                        issues.forEach { issue ->
+                            tenantIssueAgg.add(
+                                TenantIssue(
+                                    issue,
+                                    tenants.find { tenant ->
+                                        tenant.id == issue.tenantId
+                            }))
+                        }
+
+                        val adapter = Adapter(this, tenantIssueAgg)
+                        recycler.adapter = adapter
+                    }
+                })
             }
         })
 

@@ -88,10 +88,10 @@ class Adapter(val context: Context, val adapterDataList: List<Any>) : RecyclerVi
 
         override fun bind(item: TenantIssue) {
             val propertyRecyclerIssuesBuildingNumber = itemView.findViewById(R.id.propertyRecyclerIssuesBuildingNumber) as TextView
-            propertyRecyclerIssuesBuildingNumber?.text = "Building Number: " + item.tenant.buildNum
+            propertyRecyclerIssuesBuildingNumber?.text = "Building Number: " + item.tenant?.buildNum
 
             val propertyRecyclerIssuesUnitNumber = itemView.findViewById(R.id.propertyRecyclerIssuesUnitNumber) as TextView
-            propertyRecyclerIssuesUnitNumber?.text = "Unit Number: " + item.tenant.unitNum
+            propertyRecyclerIssuesUnitNumber?.text = "Unit Number: " + item.tenant?.unitNum
 
             val propertyRecyclerIssuesUrgency = itemView.findViewById(R.id.propertyRecyclerIssuesUrgency) as TextView
             propertyRecyclerIssuesUrgency?.text = "Urgency Level: " + item.issue.urgencyLevel.toString()

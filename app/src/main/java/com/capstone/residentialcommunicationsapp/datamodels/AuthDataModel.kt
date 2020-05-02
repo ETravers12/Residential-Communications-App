@@ -75,7 +75,7 @@ interface AuthApi{
 }
 
 interface TenantApi{
-    @GET("tenant/fakeTenant")
+    @GET("tenant")
     fun getTenantAsync(): Deferred<Response<List<Tenant>>>
 
     @POST("tenant/login")
