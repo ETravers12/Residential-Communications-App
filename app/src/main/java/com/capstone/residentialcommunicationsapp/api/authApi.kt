@@ -31,4 +31,5 @@ object ApiForAuthentication{
     val propertyApi : PropertyApi = retrofit().create(PropertyApi::class.java)
     val maintenanceApi : MaintenanceApi = retrofit().create(MaintenanceApi::class.java)
     val notificationsApi : NotificationsApi = retrofit().create(NotificationsApi::class.java)
+    val tenantIssueApi : TenantIssueApi = retrofit().create(TenantIssueApi::class.java)
 }

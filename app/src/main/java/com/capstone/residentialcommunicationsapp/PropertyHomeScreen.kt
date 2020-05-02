@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.residentialcommunicationsapp.datamodels.Issue
-import com.capstone.residentialcommunicationsapp.datamodels.IssueViewModel
+import com.capstone.residentialcommunicationsapp.datamodels.TenantIssue
+import com.capstone.residentialcommunicationsapp.datamodels.TenantIssueViewModel
 
 class PropertyHomeScreen : AppCompatActivity() {
 
@@ -23,12 +23,12 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        val model: IssueViewModel by viewModels()
-        model.fetchIssuesByPropertyManagerId(pmId);
+        val model: TenantIssueViewModel by viewModels()
+        model.fetchTenantIssuesByPropertyManagerId(pmId);
 
-        model.issuesLiveData.observe(this, Observer<List<Issue>>{ issue ->
-            if (issue != null) {
-                val adapter = Adapter(this, issue)
+        model.tenantIssuesLiveData.observe(this, Observer<List<TenantIssue>>{ tenantIssue ->
+            if (tenantIssue != null) {
+                val adapter = Adapter(this, tenantIssue)
                 recycler.adapter = adapter
             }
         })

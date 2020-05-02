@@ -140,3 +140,13 @@ interface NotificationsApi{
     @POST("notifications/createNotification")
     fun createNotification()
 }
+
+interface TenantIssueApi{
+    @GET("tenantIssue")
+    fun getTenantIssueAsync(): Deferred<Response<List<TenantIssue>>>
+
+    @GET("tenantIssue")
+    fun getTenantIssueByPropertyManagerAsync(@Query("propertyManagerId") propertyManagerId: Int):
+            Deferred<Response<List<TenantIssue>>>
+
+}
