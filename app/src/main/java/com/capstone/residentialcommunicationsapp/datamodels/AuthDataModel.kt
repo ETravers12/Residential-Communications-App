@@ -13,7 +13,6 @@ data class Auth(
 )
 
 data class Tenant (
-    val id: Int,
     val tenantName: String,
     val buildNum: Int,
     val unitNum: Int,
@@ -80,6 +79,9 @@ interface TenantApi{
 
     @POST("tenant/login")
     fun checkTenantLogin(@Body request: AuthRequest): Deferred<Response<Tenant>>
+
+    @POST("tenant/createTenant")
+    fun createTenant(@Body tenant: Tenant): Deferred<Response<Tenant>>
 }
 
 interface PropertyManagerApi{
@@ -88,6 +90,10 @@ interface PropertyManagerApi{
 
     @POST("propertyManager/login")
     fun checkPropertyManagerLogin(@Body request: AuthRequest): Deferred<Response<PropertyManager>>
+
+    // DO I NEED TO HAVE A FORWARD SLASH IN FRONT OF THE TENANT FOR THIS TO WORK????????
+    @POST("propertyManager/createPropertyManager")
+    fun createPropertyManager(@Body propertyManager: PropertyManager): Deferred<Response<PropertyManager>>
 }
 
 interface IssueApi{
@@ -103,7 +109,7 @@ interface IssueApi{
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("issue/createIssue")
-    fun createIssue()
+    fun createIssue(@Body issue: Issue): Deferred<Response<Issue>>
 }
 
 interface PropertyApi{
@@ -112,7 +118,7 @@ interface PropertyApi{
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("property/createProperty")
-    fun createProperty()
+    fun createProperty(@Body property: Property): Deferred<Response<Property>>
 }
 
 interface MaintenanceApi{
@@ -123,9 +129,8 @@ interface MaintenanceApi{
     fun getMaintenanceByPropertyManagerAsync(@Query("propertyManagerId")
                                              propertyManagerId:Int): Deferred<Response<List<Maintenance>>>
 
-    // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("maintenance/createMaintenance")
-    fun createMaintenance()
+    fun createMaintenance(@Body maintenance: Maintenance): Deferred<Response<Maintenance>>
 }
 
 interface NotificationsApi{
@@ -138,7 +143,7 @@ interface NotificationsApi{
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("notifications/createNotification")
-    fun createNotification()
+    fun createNotification(@Body notification: Notifications): Deferred<Response<Notifications>>
 }
 
 interface TenantIssueApi{

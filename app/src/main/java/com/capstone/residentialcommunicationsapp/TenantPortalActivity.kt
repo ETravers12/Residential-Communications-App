@@ -33,7 +33,7 @@ class TenantPortalActivity : AppCompatActivity() {
             //needed - respond if there's an error
             model.tenantLoginLiveData.observe(this, Observer<Tenant>{ user ->
                 if (user != null) {
-                    intent.putExtra("tenantId", user.id);
+                    intent.putExtra("tenantId", user.id); // had to delete the id from the data class in AuthDataModel to get TenantViewModel function working, but now I can't grab the id to pass it around
                     intent.putExtra("name", user.tenantName)
                     intent.putExtra("buildingNumber", user.buildNum)
                     intent.putExtra("unitNumber", user.unitNum)

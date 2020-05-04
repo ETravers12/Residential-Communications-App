@@ -21,8 +21,9 @@ class TenantViewModel : ViewModel(){
 
     val tenantUsersLiveData = MutableLiveData<MutableList<Tenant>>()
 
-    // Login may not have to be asynchronous?
     val tenantLoginLiveData = MutableLiveData<Tenant>()
+
+    val tenantCreationLiveData = MutableLiveData<Tenant>()
 
 
     fun fetchTenantUsers(){
@@ -36,6 +37,13 @@ class TenantViewModel : ViewModel(){
         scope.launch {
             val tenant = repository.checkTenantLogin(user, pass)
             tenantLoginLiveData.postValue(tenant)
+        }
+    }
+
+    fun createTenant(name: String, buildNum: Int, unitNum: Int, propId: Int, username: String, pass: String){
+        scope.launch {
+            val tenant = repository.createTenant(name, buildNum, unitNum, propId, username, pass)
+            tenantCreationLiveData.postValue(tenant)
         }
     }
 

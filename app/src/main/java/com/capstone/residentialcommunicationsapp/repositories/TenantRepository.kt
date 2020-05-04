@@ -27,7 +27,17 @@ class TenantRepository(private val api: TenantApi) : BaseRepository() {
         return safeApiCall(
         call = { api.checkTenantLogin(userRequest).await()},
         errorMessage = "Error Fetching User"
-    );
+        );
 
+    }
+
+    suspend fun createTenant(name: String, buildNum: Int, unitNum: Int, propId: Int,
+                             username: String, pass: String) : Tenant? {
+        val tenant = Tenant(name, buildNum, unitNum, propId, username, pass)
+
+        return safeApiCall(
+            call = {api.createTenant(tenant).await()},
+            errorMessage = "Error Fetching Tenant"
+        );
     }
 }
