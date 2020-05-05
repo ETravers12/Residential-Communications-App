@@ -13,6 +13,7 @@ data class Auth(
 )
 
 data class Tenant (
+    val id: Int,
     val tenantName: String,
     val buildNum: Int,
     val unitNum: Int,

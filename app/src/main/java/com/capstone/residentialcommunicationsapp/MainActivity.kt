@@ -22,5 +22,11 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, TenantPortalActivity::class.java)
                     startActivity(intent)
         }
+
+        val createTenantButton = findViewById<Button>(R.id.createTenantButton)
+        createTenantButton.setOnClickListener {
+            val intent = Intent(this, CreateTenant::class.java)
+            startActivity(intent)
+        }
     }
 }
