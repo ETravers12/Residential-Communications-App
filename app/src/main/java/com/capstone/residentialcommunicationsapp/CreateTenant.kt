@@ -49,7 +49,7 @@ class CreateTenant : AppCompatActivity() {
                     username.text.toString(), password.text.toString())
             }
             else {
-                createTenantError.setText("Invalid information was entered. Please try again.")
+                createTenantError.setText("Invalid information or an empty field was entered. Please try again.")
             }
         }
 

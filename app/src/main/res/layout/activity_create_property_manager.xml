@@ -10,6 +10,7 @@
         android:id="@+id/propertyManagerNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="500dp"
         android:ems="10"
         android:hint="Name"
@@ -23,6 +24,7 @@
         android:id="@+id/propertyManagerUsernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="400dp"
         android:ems="10"
         android:hint="Username"
@@ -36,6 +38,7 @@
         android:id="@+id/propertyManagerPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="300dp"
         android:ems="10"
         android:hint="Password"
@@ -50,10 +53,12 @@
         android:layout_width="213dp"
         android:layout_height="123dp"
         android:layout_marginTop="400dp"
+        android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.278" />
 
     <Button
         android:id="@+id/createPropertyManagerSubmitBtn"
@@ -61,6 +66,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.374" />
+
+    <TextView
+        android:id="@+id/createPropertyManagerTextView"
+        android:layout_width="211dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="450dp"
+        android:text="Property Manager Form"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

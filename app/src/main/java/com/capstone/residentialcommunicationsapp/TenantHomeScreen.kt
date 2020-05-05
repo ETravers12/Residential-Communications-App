@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -20,6 +21,8 @@ class TenantHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant_home_screen)
 
+        val tenantHomeAnnouncementText = findViewById<TextView>(R.id.tenantHomeAnnouncementText)
+
         val tenId = intent.getIntExtra("tenantId", 0)
 
         val recycler = findViewById<RecyclerView>(R.id.tenantHomeRecycler)
@@ -31,8 +34,12 @@ class TenantHomeScreen : AppCompatActivity() {
 
         model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ note ->
             if (note != null) {
+                tenantHomeAnnouncementText.setText("Community Announcements")
                 val adapter = Adapter(this, note)
                 recycler.adapter = adapter
+            }
+            else {
+                tenantHomeAnnouncementText.setText("There are currently no announcements.")
             }
         })
 

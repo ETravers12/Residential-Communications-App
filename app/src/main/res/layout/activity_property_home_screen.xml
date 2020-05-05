@@ -8,60 +8,60 @@
 
     <Button
         android:id="@+id/createNewPropertyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="140dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="100dp"
         android:text="Add New Property"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
 
     <Button
         android:id="@+id/createAnnouncementBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="390dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="140dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="245dp"
         android:text="Create Announcement"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578" />
 
     <Button
         android:id="@+id/propCheckMaintenanceBtn"
-        android:layout_width="199dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="140dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="40dp"
         android:text="Maintenance Directory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/propertyHomeRecycler"
         android:layout_width="322dp"
         android:layout_height="296dp"
-        android:layout_marginBottom="225dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintVertical_bias="0.736" />
 
     <TextView
         android:id="@+id/propHomeIssuesText"
-        android:layout_width="169dp"
-        android:layout_height="42dp"
+        android:layout_width="257dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="500dp"
-        android:text="Tenant Issues"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,4 +70,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544" />
+
+    <Button
+        android:id="@+id/propertySignOutBtn"
+        android:layout_width="140dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="35dp"
+        android:text="Sign Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
 </androidx.constraintlayout.widget.ConstraintLayout>

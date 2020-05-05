@@ -32,7 +32,7 @@ class TenantCreateIssue : AppCompatActivity() {
             var validity = true
 
             if (type.isNullOrEmpty() || urgencyLevel <= 0 || description.isNullOrEmpty()) {
-
+                validity = false
             }
 
             return validity

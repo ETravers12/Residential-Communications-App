@@ -48,7 +48,6 @@
         android:layout_width="305dp"
         android:layout_height="67dp"
         android:layout_marginBottom="500dp"
-        android:text="Community Announcements"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

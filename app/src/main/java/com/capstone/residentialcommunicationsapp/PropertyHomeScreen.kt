@@ -3,6 +3,7 @@ package com.capstone.residentialcommunicationsapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -18,6 +19,8 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         val pmId = intent.getIntExtra("propertyManagerId", 0)
 
+        val propertyHomeTextView = findViewById<TextView>(R.id.propHomeIssuesText)
+
         val recycler = findViewById<RecyclerView>(R.id.propertyHomeRecycler)
 
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -30,6 +33,7 @@ class PropertyHomeScreen : AppCompatActivity() {
 
         model.issuesLiveData.observe(this, Observer<List<Issue>>{ issues ->
             if (issues != null) {
+                propertyHomeTextView.setText("Tenant Issues")
                 TenantModel.tenantUsersLiveData.observe(this, Observer<List<Tenant>> { tenants ->
                     val tenantIssueAgg: MutableList<TenantIssue> = mutableListOf();
 
@@ -47,6 +51,9 @@ class PropertyHomeScreen : AppCompatActivity() {
                         recycler.adapter = adapter
                     }
                 })
+            }
+            else {
+                propertyHomeTextView.setText("There are currently no tenant issues.")
             }
         })
 
@@ -71,6 +78,12 @@ class PropertyHomeScreen : AppCompatActivity() {
             val pmId = intent.getIntExtra("propertyManagerId", 0);
             val intent = Intent(this, PropertyCreateAnnouncement::class.java)
             intent.putExtra("propertyManagerId", pmId);
+            startActivity(intent)
+        }
+
+        val propertySignOutBtn = findViewById<Button>(R.id.propertySignOutBtn)
+        propertySignOutBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
