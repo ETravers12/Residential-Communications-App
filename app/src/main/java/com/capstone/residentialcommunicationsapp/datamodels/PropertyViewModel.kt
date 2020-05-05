@@ -20,11 +20,27 @@ class PropertyViewModel : ViewModel(){
 
     val propertyLiveData = MutableLiveData<MutableList<Property>>()
 
+    val propertyCreationLiveData = MutableLiveData<Property>()
+
 
     fun fetchProperty(){
         scope.launch {
             val property = repository.getProperty()
             propertyLiveData.postValue(property)
+        }
+    }
+
+    fun fetchPropertyByPropertyManagerId(propertyManagerId: Int){
+        scope.launch {
+            val property = repository.getPropertyByPropertyManagerId(propertyManagerId)
+            propertyLiveData.postValue(property)
+        }
+    }
+
+    fun createProperty(name: String, propertyManagerId: Int){
+        scope.launch {
+            val property = repository.createProperty(name, propertyManagerId)
+            propertyCreationLiveData.postValue(property)
         }
     }
 

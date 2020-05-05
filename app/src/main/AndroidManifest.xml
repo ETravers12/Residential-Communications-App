@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreatePropertyManager"></activity>
+        <activity android:name=".NewPropertyAddedSuccessfully"></activity>
+        <activity android:name=".CreateProperty" />
+        <activity android:name=".CreatePropertyManager" />
         <activity android:name=".CreateTenant" />
         <activity android:name=".GeneralErrorMessage" />
         <activity android:name=".PropertyAddMaintenanceSuccess" />

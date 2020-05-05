@@ -29,4 +29,13 @@ class PropertyManagerRepository(private val api: PropertyManagerApi) : BaseRepos
         );
 
     }
+
+    suspend fun createPropertyManager(name: String, username: String, pass: String) : PropertyManager? {
+        val propertyManager = PropertyManager(0, name, username, pass)
+
+        return safeApiCall(
+            call = {api.createPropertyManager(propertyManager).await()},
+            errorMessage = "Error Fetching Property Manager"
+        );
+    }
 }

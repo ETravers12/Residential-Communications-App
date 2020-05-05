@@ -18,4 +18,24 @@ class PropertyRepository(private val api: PropertyApi) : BaseRepository() {
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun getPropertyByPropertyManagerId(propertyManagerId: Int): MutableList<Property>? {
+
+        val authResponse = safeApiCall(
+            call = { api.getPropertiesByPropertyManagerAsync(propertyManagerId).await() },
+            errorMessage = "Error Fetching Property"
+        )
+
+        return authResponse?.toMutableList();
+
+    }
+
+    suspend fun createProperty(name: String, propertyManagerId: Int) : Property? {
+        val property = Property(0, name, propertyManagerId)
+
+        return safeApiCall(
+            call = {api.createProperty(property).await()},
+            errorMessage = "Error Fetching Property"
+        );
+    }
 }

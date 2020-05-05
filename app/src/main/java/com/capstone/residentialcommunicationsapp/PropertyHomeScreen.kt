@@ -50,6 +50,14 @@ class PropertyHomeScreen : AppCompatActivity() {
             }
         })
 
+        val createNewPropertyBtn = findViewById<Button>(R.id.createNewPropertyBtn)
+        createNewPropertyBtn.setOnClickListener {
+            val pmId = intent.getIntExtra("propertyManagerId", 0);
+            val intent = Intent(this, CreateProperty::class.java)
+            intent.putExtra("propertyManagerId", pmId);
+            startActivity(intent)
+        }
+
         val propCheckMaintenanceBtn = findViewById<Button>(R.id.propCheckMaintenanceBtn)
         propCheckMaintenanceBtn.setOnClickListener {
             val pmId = intent.getIntExtra("propertyManagerId", 0);

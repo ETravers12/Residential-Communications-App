@@ -20,6 +20,7 @@ class MaintenanceViewModel : ViewModel(){
 
     val maintenanceLiveData = MutableLiveData<MutableList<Maintenance>>()
 
+    val maintenanceCreationLiveData = MutableLiveData<Maintenance>()
 
     fun fetchMaintenance(){
         scope.launch {
@@ -32,6 +33,13 @@ class MaintenanceViewModel : ViewModel(){
         scope.launch {
             val maintenance = repository.getMaintenanceByPropertyManagerId(propertyManagerId)
             maintenanceLiveData.postValue(maintenance)
+        }
+    }
+
+    fun createMaintenance(name: String, phoneNumber: String, propertyManagerId: Int){
+        scope.launch {
+            val property = repository.createMaintenance(name, phoneNumber, propertyManagerId)
+            maintenanceCreationLiveData.postValue(property)
         }
     }
 

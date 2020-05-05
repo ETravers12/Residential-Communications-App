@@ -42,4 +42,12 @@ class IssueRepository(private val api: IssueApi) : BaseRepository() {
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun createIssue(type: String, description: String, urgencyLevel: Int, tenantId: Int) : Issue? {
+        val issue = Issue(0, type, description, urgencyLevel, tenantId,"Incomplete")
+
+        return safeApiCall(
+            call = {api.createIssue(issue).await()},
+            errorMessage = "Error Fetching Issue")
+    }
 }

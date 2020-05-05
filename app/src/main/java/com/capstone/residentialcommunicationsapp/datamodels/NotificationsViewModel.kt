@@ -20,6 +20,8 @@ class NotificationsViewModel : ViewModel(){
 
     val notificationsLiveData = MutableLiveData<MutableList<Notifications>>()
 
+    val notificationsCreationLiveData = MutableLiveData<Notifications>()
+
 
     fun fetchNotifications(){
         scope.launch {
@@ -32,6 +34,13 @@ class NotificationsViewModel : ViewModel(){
         scope.launch {
             val notifications = repository.getNotificationsByTenantId(tenantId)
             notificationsLiveData.postValue(notifications)
+        }
+    }
+
+    fun createNotification(propertyId: Int, message: String){
+        scope.launch {
+            val note = repository.createNotification(propertyId, message)
+            notificationsCreationLiveData.postValue(note)
         }
     }
 

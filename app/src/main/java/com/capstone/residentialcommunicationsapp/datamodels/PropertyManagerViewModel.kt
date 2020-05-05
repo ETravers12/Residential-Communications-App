@@ -21,8 +21,9 @@ class PropertyManagerViewModel : ViewModel(){
 
     val propertyManagerUsersLiveData = MutableLiveData<MutableList<PropertyManager>>()
 
-    // Login may not have to be asynchronous?
     val propertyManagerLoginLiveData = MutableLiveData<PropertyManager>()
+
+    val propertyManagerCreationLiveData = MutableLiveData<PropertyManager>()
 
 
     fun fetchPropertyManagerUsers(){
@@ -36,6 +37,13 @@ class PropertyManagerViewModel : ViewModel(){
         scope.launch {
             val propertyManager = repository.checkPropertyManagerLogin(user, pass)
             propertyManagerLoginLiveData.postValue(propertyManager)
+        }
+    }
+
+    fun createPropertyManager(name: String, username: String, pass: String){
+        scope.launch {
+            val propertyManager = repository.createPropertyManager(name, username, pass)
+            propertyManagerCreationLiveData.postValue(propertyManager)
         }
     }
 

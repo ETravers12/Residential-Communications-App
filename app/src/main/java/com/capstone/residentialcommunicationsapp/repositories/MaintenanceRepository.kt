@@ -30,4 +30,13 @@ class MaintenanceRepository(private val api: MaintenanceApi) : BaseRepository() 
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun createMaintenance(name: String, phoneNumber: String, propertyManagerId: Int) : Maintenance? {
+        val maintenance = Maintenance(0, name, phoneNumber, propertyManagerId)
+
+        return safeApiCall(
+            call = {api.createMaintenance(maintenance).await()},
+            errorMessage = "Error Fetching Maintenance"
+        );
+    }
 }

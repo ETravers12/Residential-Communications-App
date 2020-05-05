@@ -10,27 +10,29 @@
         android:id="@+id/createAnnouncementBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="350dp"
         android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173" />
 
     <EditText
         android:id="@+id/announcementTextInput"
-        android:layout_width="238dp"
-        android:layout_height="39dp"
+        android:layout_width="268dp"
+        android:layout_height="161dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Type your announcement here..."
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317" />
+        app:layout_constraintVertical_bias="0.452" />
 
     <TextView
         android:id="@+id/createNewAnnouncementTextview"
@@ -40,6 +42,30 @@
         android:text="Create a New Announcement"
         android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/createAnnouncementError"
+        android:layout_width="236dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="440dp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/createAnnouncementPropertyId"
+        android:layout_width="268dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="300dp"
+        android:ems="10"
+        android:hint="Property ID Number"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

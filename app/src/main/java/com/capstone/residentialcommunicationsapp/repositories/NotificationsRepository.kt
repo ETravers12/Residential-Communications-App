@@ -30,4 +30,13 @@ class NotificationsRepository(private val api: NotificationsApi) : BaseRepositor
         return authResponse?.toMutableList();
 
     }
+
+    suspend fun createNotification(propertyId: Int, message: String) : Notifications? {
+        val note = Notifications(0, propertyId, message)
+
+        return safeApiCall(
+            call = {api.createNotification(note).await()},
+            errorMessage = "Error Fetching Notification"
+        );
+    }
 }

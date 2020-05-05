@@ -28,5 +28,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateTenant::class.java)
             startActivity(intent)
         }
+
+        val createPropertyManagerButton = findViewById<Button>(R.id.createPropertyManagerButton)
+        createPropertyManagerButton.setOnClickListener {
+            val intent = Intent(this, CreatePropertyManager::class.java)
+            startActivity(intent)
+        }
     }
 }

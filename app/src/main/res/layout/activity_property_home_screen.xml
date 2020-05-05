@@ -7,10 +7,23 @@
     tools:context=".PropertyHomeScreen">
 
     <Button
+        android:id="@+id/createNewPropertyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="50dp"
+        android:text="Add New Property"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/createAnnouncementBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="390dp"
         android:layout_marginBottom="50dp"
         android:text="Create Announcement"
         app:layout_constraintBottom_toBottomOf="parent"

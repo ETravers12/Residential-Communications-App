@@ -20,6 +20,8 @@ class IssueViewModel : ViewModel(){
 
     val issuesLiveData = MutableLiveData<MutableList<Issue>>()
 
+    val issuesCreationLiveData = MutableLiveData<Issue>()
+
 
     fun fetchIssues(){
         scope.launch {
@@ -39,6 +41,13 @@ class IssueViewModel : ViewModel(){
         scope.launch {
             val issues = repository.getIssuesByPropertyManagerId(propertyManagerId)
             issuesLiveData.postValue(issues)
+        }
+    }
+
+    fun createIssue(type: String, description: String, urgencyLevel: Int, tenantId: Int){
+        scope.launch {
+            val issue = repository.createIssue(type, description, urgencyLevel, tenantId)
+            issuesCreationLiveData.postValue(issue)
         }
     }
 

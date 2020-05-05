@@ -35,7 +35,6 @@ data class Issue (
     val description: String,
     val urgencyLevel: Int,
     val tenantId: Int,
-    val maintenanceId: Int,
     val status: String
 )
 
@@ -48,7 +47,8 @@ data class Property (
 data class Maintenance (
     val id: Int,
     val name: String,
-    val phoneNumber: String
+    val phoneNumber: String,
+    val propertyManagerId: Int
 )
 
 data class Notifications (
@@ -116,6 +116,10 @@ interface IssueApi{
 interface PropertyApi{
     @GET("property")
     fun getPropertyAsync(): Deferred<Response<List<Property>>>
+
+    @GET("property")
+    fun getPropertiesByPropertyManagerAsync(@Query("propertyManagerId") propertyManagerId: Int):
+            Deferred<Response<List<Property>>>
 
     // FIGURE OUT HOW TO POST ISSUE TO DATABASE!!!!!!!!!!!!
     @POST("property/createProperty")
