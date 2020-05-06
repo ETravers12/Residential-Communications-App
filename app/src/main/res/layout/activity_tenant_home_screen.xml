@@ -8,10 +8,10 @@
 
     <Button
         android:id="@+id/issueCreationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="250dp"
         android:text="Create New Work Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,11 +21,22 @@
 
     <Button
         android:id="@+id/tenCheckIssuesBtn"
-        android:layout_width="198dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="450dp"
         android:text="View Work Orders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tenSignOutBtn"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="450dp"
+        android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +45,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tenantHomeRecycler"
         android:layout_width="298dp"
-        android:layout_height="268dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +57,8 @@
 
     <TextView
         android:id="@+id/tenantHomeAnnouncementText"
-        android:layout_width="305dp"
-        android:layout_height="67dp"
+        android:layout_width="338dp"
+        android:layout_height="79dp"
         android:layout_marginBottom="500dp"
         android:textAlignment="center"
         android:textSize="24sp"

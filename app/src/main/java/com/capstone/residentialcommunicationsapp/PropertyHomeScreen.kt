@@ -32,7 +32,7 @@ class PropertyHomeScreen : AppCompatActivity() {
         TenantModel.fetchTenantUsers();
 
         model.issuesLiveData.observe(this, Observer<List<Issue>>{ issues ->
-            if (issues != null) {
+            if (issues != null && issues.size > 0) {
                 propertyHomeTextView.setText("Tenant Issues")
                 TenantModel.tenantUsersLiveData.observe(this, Observer<List<Tenant>> { tenants ->
                     val tenantIssueAgg: MutableList<TenantIssue> = mutableListOf();

@@ -33,7 +33,7 @@ class TenantHomeScreen : AppCompatActivity() {
         model.fetchNotificationsByTenantId(tenId);
 
         model.notificationsLiveData.observe(this, Observer<List<Notifications>>{ note ->
-            if (note != null) {
+            if (note != null && note.size > 0) {
                 tenantHomeAnnouncementText.setText("Community Announcements")
                 val adapter = Adapter(this, note)
                 recycler.adapter = adapter
@@ -56,6 +56,12 @@ class TenantHomeScreen : AppCompatActivity() {
             val tenId = intent.getIntExtra("tenantId", 0)
             val intent = Intent(this, TenantViewIssues::class.java)
             intent.putExtra("tenantId", tenId)
+            startActivity(intent)
+        }
+
+        val tenSignOutBtn = findViewById<Button>(R.id.tenSignOutBtn)
+        tenSignOutBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

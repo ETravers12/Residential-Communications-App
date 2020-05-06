@@ -25,25 +25,10 @@ class NewPropertyAddedSuccessfully : AppCompatActivity() {
         val model: PropertyViewModel by viewModels()
         model.fetchPropertyByPropertyManagerId(pmId);
 
-        // I need help here
-        fun findMaxPropertyId(): Int {
-
-            var maxPropertyId = 0
-
-            model.propertyLiveData.observe(this, Observer<List<Property>> { property ->
-                if (property != null) {
-                    property.forEach { prop ->
-                        if (prop.id > maxPropertyId) {
-                            maxPropertyId = prop.id
-                        }
-                    }
-                }
-            })
-            return maxPropertyId
-        }
-
-        val maxValue = findMaxPropertyId()
-        newPropertyIdNumber.setText(maxValue.toString())
+        model.propertyLiveData.observe(this, Observer<List<Property>> { x ->
+            val maxValue = findMaxPropertyId(x)
+            newPropertyIdNumber.setText(maxValue.toString())
+        })
 
         val propertyCreationReturnBtn = findViewById<Button>(R.id.propertyCreationReturnBtn)
         propertyCreationReturnBtn.setOnClickListener {
@@ -52,5 +37,17 @@ class NewPropertyAddedSuccessfully : AppCompatActivity() {
             intent.putExtra("propertyManagerId", pmId);
             startActivity(intent)
         }
+
+    }
+    private fun findMaxPropertyId(property: List<Property>): Int {
+        var maxPropertyId: Int = 0
+
+        property.forEach { prop ->
+            if (prop.id > maxPropertyId) {
+                maxPropertyId = prop.id
+            }
+        };
+
+        return maxPropertyId
     }
 }
