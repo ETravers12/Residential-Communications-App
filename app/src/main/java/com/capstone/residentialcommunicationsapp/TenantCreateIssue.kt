@@ -31,7 +31,7 @@ class TenantCreateIssue : AppCompatActivity() {
         fun isValid(type: String, urgencyLevel: Int, description: String) : Boolean {
             var validity = true
 
-            if (type.isNullOrEmpty() || urgencyLevel <= 0 || description.isNullOrEmpty()) {
+            if (type.isNullOrEmpty() || urgencyLevel <= 0 || urgencyLevel >= 6  || description.isNullOrEmpty()) {
                 validity = false
             }
 
